@@ -1,209 +1,241 @@
 * {
-    margin: 0;
+  margin: 0;
+  font-family: monospace;
+}
+
+.to_blur {
+  height: 100vh;
+}
+
+.restart_box {
+  position: absolute;
+  display: none;
+  text-align: center;
+  margin: 0 30vw;
+  width: 40vw;
+  top: 30vh;
+  z-index: 99;
+}
+
+.restart {
+  border: 4px solid black;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 5px gray;
+  color: white;
+}
+
+.restart_box > h1 {
+  font-size: 72px;
+}
+
+.drop_down {
+  display: none;
+}
+
+header {
+  background-color: LightGray;
+  border-bottom: solid black 4px;
+}
+.math_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.math_flex > h4 {
+  font-size: 2rem;
+  width: 10rem;
+}
+
+.score {
+  border-bottom: solid black 4px;
+  border-right: solid black 4px;
+}
+
+.time {
+  border-bottom: solid black 4px;
+  border-left: solid black 4px;
+}
+
+.equation {
+  font-size: 4rem;
+}
+
+.time_tables {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+}
+
+.time_tables > ul {
+  padding: 0.4rem 1rem;
+  background-color: white;
+  border-radius: 2rem 4rem;
+  border: solid black 0.1rem;
+  margin-bottom: 2px;
+}
+
+.time_tables > ul:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(58, 116, 180, 1) 0%,
+    rgba(29, 176, 253, 1) 17%,
+    rgba(61, 252, 231, 1) 50%,
+    rgba(69, 196, 252, 1) 100%
+  );
+}
+
+.selected_multiplier {
+  background: linear-gradient(
+    90deg,
+    rgba(58, 180, 144, 1) 2%,
+    rgba(68, 252, 61, 1) 50%,
+    rgba(69, 252, 173, 1) 96%
+  );
+}
+
+.answers {
+  display: grid;
+  list-style: none;
+  gap: 20px;
+  grid-template: 35vh 35vh/ 40vw 40vw;
+  margin: 2.5vh 10vw 0vh;
+}
+
+.answer {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 2px 10px;
+  text-align: center;
+  box-shadow: 0px 5px 5px gray;
+  font-size: 2rem;
+}
+
+.credits {
+  position: absolute;
+  bottom: 4px;
+  width: 100%;
+}
+
+.credits > h4 {
+  text-align: center;
+}
+
+.answers > h2:hover {
+  transform: translatey(-3px);
+}
+
+@keyframes correct_change {
+  0% {
+    background-color: white;
   }
-  
-  .restart_box {
-    position: absolute;
-    display: none;
-    text-align: center;
-    margin: 0 30vw;
-    width: 40vw;
-    top: 30vh;
-    z-index: 99;
+  50% {
+    background-color: lime;
   }
-  .restart {
-    border: 4px solid black;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 5px 5px gray;
-    color: white;
+  100% {
+    background-color: white;
   }
-  .restart_box > h1 {
-    font-size: 72px;
+}
+
+@keyframes incorrect_change {
+  0% {
+    background-color: white;
   }
-  
-  .mobile_only {
-    display: none;
+  50% {
+    background-color: red;
   }
-  
-  header {
-    background-color: LightGray;
-    border-bottom: solid black 4px;
+  100% {
+    background-color: white;
   }
-  .math_flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+}
+
+@keyframes slide_in {
+  0% {
+    right: 100vw;
   }
-  
-  .math_flex > h4 {
+  100% {
+    right: 0vw;
+  }
+}
+
+.correct_animation {
+  animation-name: correct_change;
+  animation-duration: 0.25s;
+}
+
+.incorrect_animation {
+  animation-name: incorrect_change;
+  animation-duration: 0.25s;
+}
+
+@media only screen and (max-width: 700px) {
+  .equation {
     font-size: 2rem;
   }
-  
-  .score {
-    border-bottom: solid black 4px;
-    border-right: solid black 4px;
+
+  .math_flex > h4 {
+    font-size: 1rem;
+    width: 5rem;
   }
-  
-  .time {
-    border-bottom: solid black 4px;
-    border-left: solid black 4px;
-  }
-  
-  .equation {
-    font-size: 4rem;
-  }
-  
+
   .time_tables {
-    display: flex;
-    justify-content: space-around;
-    margin: 0;
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  
+
   .time_tables > ul {
-    padding: 0.4rem 1rem;
-    background-color: white;
-    border-radius: 2rem 4rem;
-    border: solid black 0.1rem;
+    font-size: 0.8rem;
+    padding: 2px;
+    text-align: center;
+    width: auto;
+  }
+
+  .drop_down {
+    display: block;
+    margin: auto;
+    width: 12rem;
+    border: solid black 2px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: gray;
     margin-bottom: 2px;
   }
-  
-  .time_tables > ul:hover {
-    background: linear-gradient(90deg, rgba(58,116,180,1) 0%, rgba(29,176,253,1) 17%, rgba(61,252,231,1) 50%, rgba(69,196,252,1) 100%); 
-  }
-  
-  .selected_multiplier {
-    background: linear-gradient(90deg, rgba(58,180,144,1) 2%, rgba(68,252,61,1) 50%, rgba(69,252,173,1) 96%); 
-  }
-  
-  .answers {
-    display: grid;
-    list-style: none;
-    gap: 20px;
-    grid-template: 35vh 35vh/ 40vw 40vw;
-    margin: 2.5vh 10vw 0vh;
-  }
-  
-  .answer {
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: 2px 10px;
-    text-align: center;
-    box-shadow: 0px 5px 5px gray;
+
+  .time_tables > ul {
     font-size: 2rem;
   }
-  
-  .answers > h2:hover {
-    transform: translatey(-3px);
+
+  .time_tables {
+    position: absolute;
+    right: 100vw;
+    display: block;
   }
-  
-  @keyframes correct_change {
-    0% {
-      background-color: white;
-    }
-    50% {
-      background-color: lime;
-    }
-    100% {
-      background-color: white;
-    }
+
+  .add_slide {
+    animation-name: slide_in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
   }
-  
-  @keyframes incorrect_change {
-    0% {
-      background-color: white;
-    }
-    50% {
-      background-color: red;
-    }
-    100% {
-      background-color: white;
-    }
-    
-  }
-  
-  @keyframes slide_in {
-    0% {
-      right: 100vw;
-    }
-    100% {
-      right: 0vw;
-    }
-  }
-  .correct_animation {
-    animation-name: correct_change;
-    animation-duration: 0.25s;
-  }
-  
-  .incorrect_animation {
-    animation-name: incorrect_change;
-    animation-duration: 0.25s;
-  }
-  
-  @media only screen and (max-width: 700px) {
-    .equation {
-      font-size: 2rem;
-    }
-    .math_flex > h4{
-      font-size: 1rem;
-    }
-    
-    .time_tables {
-      display: grid;
-      width: 100vw;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    
-    .time_tables > ul {
-      font-size: .8rem;
-  padding: 2px;
-    text-align: center;
-    }
-    
-    .mobile_only {
-      display: inline-block;
-    }
-    .drop_down {
-      border: solid black 2px;
-      width: 30px;
-      height: 30px;
-      text-align: center;
-      font-size: 1.5rem;
-        border-radius: 50%;
-      background-color: gray;
-      margin-bottom: 2px;
-    }
-    
-    .time_tables > ul {
-      font-size: 2rem;
-    }
-    .time_tables {
-      position: absolute;
-      right: 100vw;
-      display: block;
-    }
-    
-    .add_slide {
-      animation-name: slide_in;
-      animation-duration: .5s;
-      animation-fill-mode: forwards;
-    }
-    
+
   .restart_box > h1 {
     font-size: 2rem;
   }
-    .answers {
-      display: flex;
-      flex-direction: column;
-      height: 70vh;
-    }
-    
-    .answer {
-      height: 20vh;
-      transform: 0;
-    }
-    
-    .answers > h2:hover {
-      transform: none;
-    }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
   }
+
+  .answer {
+    height: 20vh;
+    transform: 0;
+  }
+
+  .answers > h2:hover {
+    transform: none;
+  }
+}
